@@ -8,21 +8,32 @@
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
-    <!-- Nav bar -->.
+    <!-- Nav bar -->
     <nav class="navigation">
       <div class="header">
         <a href="./index.html" class="item-1"><h1 class="home">Home</h1></a>
-        <a href="./highscore.html" class="item-2"><h1>HighScores</h1></a>
+        <a href="./highscore.html" class="item-2"
+          ><h1 class="highscore">HighScores</h1></a
+        >
       </div>
     </nav>
     <main>
-      <!-- start quiz section -->.
+      <!-- start quiz section -->
       <section id="#start-quiz-section">
-        <banner>
-          <h1></h1>
-          <div></div>
+        <banner class="banner">
+          <h1 class="quiz-title">General History Quiz</h1>
           <div>
-            <button id="#start-quiz-btn">start Quiz</button>
+            <p class="info">
+              This is a multiple choice timed history quiz. Answer all questions
+              correctly within the time limit and receive a HighScore. Answer a
+              question wrong and 3 seconds will be deducted from the countdown
+              timer.
+            </p>
+          </div>
+          <div>
+            <a href="./quiz.html">
+              <button class="start-btn" id="#start-quiz-btn">start Quiz</button>
+            </a>
           </div>
         </banner>
       </section>
