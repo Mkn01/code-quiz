@@ -7,7 +7,7 @@
     <title>Code quiz HighScores</title>
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-  <body>
+  <body class="code-quiz">
     <!-- Nav bar -->
     <nav class="navigation">
       <div class="header">
@@ -21,11 +21,22 @@
     <main>
       <section>
         <form class="form">
-          <div><h3 class="timer-score"></h3></div>
-          <div><input /></div>
+          <div><h2 class="timer-score">Your Score</h2></div>
+          Enter Name <input class="input" />
           <div><button class="submit-btn">Submit</button></div>
           <div class="render-alert"></div>
         </form>
+      </section>
+
+      <section class="scores">
+        <h3 class="Scoreboard">Scoreboard</h3>
+        <ul class="Scoreboard-list">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
       </section>
     </main>
     <script src="./assets/js/index.js"></script>
