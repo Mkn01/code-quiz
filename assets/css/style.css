@@ -1,0 +1,44 @@
+* {
+  --imperial-red: #e63946ff;
+  --honeydew: #f1faeeff;
+  --powder-blue: #a8dadcff;
+  --celadon-blue: #457b9dff;
+  --prussian-blue: #1d3557ff;
+}
+.code-quiz {
+  background-color: #f1faeeff;
+}
+.navigation {
+  background-color: #1d3557ff;
+}
+.home {
+  color: #f1faeeff;
+  text-align: right;
+}
+.highscore {
+  color: #f1faeeff;
+  text-align: right;
+}
+
+.quiz-title {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.info-box {
+  background-color: #a8dadcff;
+  border-style: solid;
+  border-color: #a8dadcff;
+}
+
+.info {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.start {
+  text-align: center;
+  margin-top: 10px;
+}
+.start-btn {
+  text-align: center;
+}
