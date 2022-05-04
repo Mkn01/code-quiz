@@ -11,33 +11,28 @@ const onLoad = () => {
 };
 
 const removeStartSection = () => {
-  startQuizBtn.addEventListener("click", removeStartSection);
+  const generateBtn = document.querySelector("#startQuizBtn");
+  startQuizBtn.addEventListener("click", (startTimer) => {});
 };
 
 const startTimer = () => {
-  // declare function to execute every 1 sec
-  //*const startBtn = document.getElementById("startQuizBtn");
-  //const timerSpan = document.getElementById("timer-span");
-  //let timer = 100;
-  //const updateTimerValue = () => {
-  //timer -= 1;
-  //timerSpan.textContent = timer;
-  //};
+  const startBtn = document.getElementById("#startQuizBtn");
+  const timerSpan = document.getElementById("timer-span");
+  function countdown(){
+    var timeleft = 100;
 
-  //const timerId = setInterval(updateTimerValue, 1000);
-  //console.log(timerId);
+    var timeInterval = setInterval(function () {
+      if (timeLeft > 1) {
+        timerSpan.textContent = timeLeft + 'seconds remaining';
+        timeLeft--;
+      }
+      else { timerSpan.textContent = '';
+      clearInterval(timeInterval);
+      displayMessage();
 
-  //*startBtn.addEventListener("click", startTimer);
-
-  const countdown = () => {
-    // decrement timer value
-    // if quizComplete is true then stop timer
-    // check if timer reaches 0
-    // if true render game over
-  };
-
-  // setInterval of 1000ms (1s)
-};
+      }
+    }, 1000);
+  }
 
 const validateAnswer = () => {
   // get answer clicked from user
@@ -70,8 +65,6 @@ const renderTimerSection = () => {
 
 const renderQuestionSection = () => {
   // use HTML as guide and build in JS
-  const Questions ["In which month of 1914 did the First World War begin?","Who became Prime Minister of Britain in 1916?",", "","",""
-]
   // append section to main
   // add click event listener on #question-section
 };
