@@ -1,8 +1,39 @@
 // global declarations
-const questions = [];
+const questions = [
+  "In which month of 1914 did the First World War begin?",
+  "the German attack on which country caused Britain to enter the Second World War?",
+  "Richard III died at which battle?",
+  "In Britain, who first held the office that today is known as Prime Minister?",
+  "Who was the world’s first woman Prime Minister?",
+];
 let questionIndex = 0;
 let timerValue = 10 * questions.length;
 let quizComplete = false;
+const startBtn = document.getElementById("startQuizBtn");
+
+// this code section will only be executed when the path is /quiz.html
+if (document.location.pathname === "/quiz.html") {
+  const timerSpan = document.getElementById("timerSpan");
+
+  console.log(timerSpan);
+  let timer = 60;
+  timerSpan.textContent = timer;
+
+  const countdown = () => {
+    // decrement timer value
+    timer -= 1;
+
+    if (timer === 0) {
+      clearInterval(timerTick);
+    }
+    timerSpan.textContent = timer;
+    // if quizComplete is true then stop timer
+    // check if timer reaches 0
+    // if true render game over
+  };
+
+  const timerTick = setInterval(countdown, 1000);
+}
 
 const onLoad = () => {
   // initialise local storage
@@ -10,29 +41,18 @@ const onLoad = () => {
   // if false then set highscores to empty array in LS
 };
 
-const removeStartSection = () => {
-  const generateBtn = document.querySelector("#startQuizBtn");
-  startQuizBtn.addEventListener("click", (startTimer) => {});
-};
+const removeStartSection = () => {};
 
 const startTimer = () => {
-  const startBtn = document.getElementById("#startQuizBtn");
-  const timerSpan = document.getElementById("timer-span");
-  function countdown(){
-    var timeleft = 100;
+  console.log(document.location.pathname);
+  // declare function to execute every 1 sec
 
-    var timeInterval = setInterval(function () {
-      if (timeLeft > 1) {
-        timerSpan.textContent = timeLeft + 'seconds remaining';
-        timeLeft--;
-      }
-      else { timerSpan.textContent = '';
-      clearInterval(timeInterval);
-      displayMessage();
+  // setInterval of 1000ms (1s)
+};
 
-      }
-    }, 1000);
-  }
+if (startBtn) {
+  startBtn.addEventListener("click", startTimer);
+}
 
 const validateAnswer = () => {
   // get answer clicked from user
@@ -91,14 +111,12 @@ const renderQuizCompleteSection = () => {
 };
 
 const startQuiz = () => {
+  // remove start section
   // start timer
-  startQuizBtn.addEventListener("click", startTimer);
-
   // render timer section
   // render question section
 };
 
 // add event listeners
-
 // add document on load event listener
 // add start button click event listener
