@@ -57,8 +57,17 @@
 }
 
 .answers {
-  text-align: right;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
+.answer-button {
+  width: 40%;
+  margin: 5%, 5%;
+}
+
 .quiz-section {
   background-color: #a8dadcff;
   margin-top: 10px;

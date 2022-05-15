@@ -9,74 +9,92 @@ const questions = [
 const questionsArray = [
   {
     question: "In which month of 1914 did the First World War begin?",
-    answers: [
-      {
-        text: "June",
-        text: "January",
-        text: "August",
-        text: "December",
-      },
-    ],
+    answers: ["June", "January", "August", "December"],
     correctAnswer: "August",
   },
   {
     question:
       "the German attack on which country caused Britain to enter the Second World War?",
-    answers: [
-      {
-        text: "France",
-        text: "Poland",
-        text: "Austria-Hungary",
-        text: "Belgium",
-      },
-    ],
+    answers: ["France", "Poland", "Austria-Hungary", "Belgium"],
     correctAnswer: "Poland",
   },
   {
     question: "Richard III died at which battle?",
-    answers: [
-      {
-        text: "Boyne",
-        text: "Waterloo",
-        text: "Hastings",
-        text: "Bosworth Field",
-      },
-    ],
+    answers: ["Boyne", "Waterloo", "Hastings", "Bosworth Field"],
     correctAnswer: "Bosworth Field",
   },
   {
     question:
       "In Britain, who first held the office that today is known as Prime Minister?",
     answers: [
-      {
-        text: "David Lloyd George",
-        text: "Robert Walpole",
-        text: "Neville Chamberlain",
-        text: "John Russell",
-      },
+      "David Lloyd George",
+      "Robert Walpole",
+      "Neville Chamberlain",
+      "John Russell",
     ],
     correctAnswer: "Robert Walpole",
   },
   {
     question: "Who was the world’s first woman Prime Minister?",
     answers: [
-      {
-        text: "Indira Gandhi",
-        text: "Margaret Thatcher",
-        text: "Sirimavo Bandaranaike",
-        text: "Golda Meir",
-      },
+      "Indira Gandhi",
+      "Margaret Thatcher",
+      "Sirimavo Bandaranaike",
+      "Golda Meir",
     ],
     correctAnswer: "Sirimavo Bandaranaike",
   },
 ];
-console.log(questionsArray);
 
 let questionIndex = 0;
 let timerValue = 10 * questions.length;
 let quizComplete = false;
 
 const startBtn = document.getElementById("startQuizBtn");
+const quizContainer = document.getElementById("start-quiz-section");
+const questionDiv = document.getElementById("questions");
+const answersContainer = document.getElementById("answersContainer");
+
+const validateAnswer = (event) => {
+  const chosenAnswer = event.target.dataset.correct;
+
+  if (questionsArray.length > questionIndex + 1) {
+    if (chosenAnswer) {
+      questionIndex += 1;
+
+      answersContainer.innerHTML = "";
+      generateQuestions(questionIndex);
+    } else {
+      timerValue -= 5;
+    }
+  } else {
+    quizContainer.innerHTML = "";
+  }
+
+  // if incorrect subtract 5 seconds from timerValue
+  // if incorrect render error alert with message and status
+  // if correct render success alert with message and status
+  // set timeout for 500ms and then go to next question
+  // if question is last question set quizComplete to true and then render form
+  // if question is not last question then increment question index and render next question
+};
+
+// main function to generate the questions
+const generateQuestions = (index) => {
+  questionDiv.innerHTML = questionsArray[index].question;
+
+  questionsArray[index].answers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.innerText = answer;
+    button.setAttribute("class", "answer-button");
+    answersContainer.append(button);
+
+    if (answer === questionsArray[index].correctAnswer) {
+      button.dataset.correct = answer;
+    }
+    button.addEventListener("click", validateAnswer);
+  });
+};
 
 // this code section will only be executed when the path is /quiz.html
 if (document.location.pathname === "/quiz.html") {
@@ -99,6 +117,7 @@ if (document.location.pathname === "/quiz.html") {
   };
 
   const timerTick = setInterval(countdown, 1000);
+  generateQuestions(questionIndex);
 }
 
 const onLoad = () => {
@@ -115,26 +134,6 @@ const startTimer = () => {
   // declare function to execute every 1 sec
 
   // setInterval of 1000ms (1s)
-};
-
-// main function to generate the questions
-const generateQuestions = () => {
-  for (var i = 0; i < questions.length; i++) {
-    console.log(questions[i]);
-  }
-};
-const printQuestions = document.querySelector("questions");
-
-const validateAnswer = () => {
-  // get answer clicked from user
-  // get the correct answer for question
-  // compare the 2 answers
-  // if incorrect subtract 5 seconds from timerValue
-  // if incorrect render error alert with message and status
-  // if correct render success alert with message and status
-  // set timeout for 500ms and then go to next question
-  // if question is last question set quizComplete to true and then render form
-  // if question is not last question then increment question index and render next question
 };
 
 const handleFormSubmit = () => {
@@ -193,5 +192,4 @@ const startQuiz = () => {
 // add start button click event listener
 if (startBtn) {
   startBtn.addEventListener("click", startTimer);
-  startBtn.addEventListener("click", generateQuestions);
 }
