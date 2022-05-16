@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code quiz Questions</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
+  <body class="code-quiz">
+    <!-- Nav bar -->
+    <nav class="navigation">
+      <div class="header">
+        <a href="./index.html" class="item-1"><h1 class="home">Home</h1></a>
+        <a href="./highscore.html" class="item-2"
+          ><h1 class="highscore">HighScores</h1></a
+        >
+      </div>
+    </nav>
+    <main>
+      <!-- countdown timer section -->
+      <section>
+        <div>
+          Timer:
+          <span class="timer-span" id="timerSpan"></span>
+        </div>
+      </section>
+
+      <!-- question section -->
+      <section class="quiz-section" id="start-quiz-section">
+        <h2 class="question" id="questions"></h2>
+        <div>
+          <div class="answers" id="answersContainer"></div>
+        </div>
+      </section>
+    </main>
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>
