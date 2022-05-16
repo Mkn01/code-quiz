@@ -1,5 +1,6 @@
 // global declarations
 let timer = 60;
+const score = [];
 const questions = [
   "In which month of 1914 did the First World War begin?",
   "the German attack on which country caused Britain to enter the Second World War?",
@@ -80,6 +81,8 @@ const validateAnswer = (event) => {
   if (questionsArray.length > questionIndex + 1) {
     if (chosenAnswer) {
       questionIndex += 1;
+      score.push(questionIndex + 1);
+      console.log(score);
 
       answersContainer.innerHTML = "";
       generateQuestions(questionIndex);
@@ -202,10 +205,14 @@ const startQuiz = () => {
   // render timer section
   // render question section
 };
-
+const goToHighScore = () => {
+  location.href = "highscore.html";
+};
 // add event listeners
 // add document on load event listener
 // add start button click event listener
 if (startBtn) {
   startBtn.addEventListener("click", startTimer);
 }
+//if ((questionIndex = 4)) {
+//answer - button.addEventListener("click", goToHighScore);
