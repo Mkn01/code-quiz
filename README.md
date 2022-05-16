@@ -6,7 +6,7 @@ This application is a timed quiz. Their are five questions to be answered within
 
 ## Deployed URL
 
-You can find the application deployed to github pages (https://mkn01.github.io/password-generator/)
+You can find the application deployed to github pages (https://mkn01.github.io/code-quiz/)
 
 ## Technologies
 
