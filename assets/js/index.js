@@ -1,4 +1,5 @@
 // global declarations
+let timer = 60;
 const questions = [
   "In which month of 1914 did the First World War begin?",
   "the German attack on which country caused Britain to enter the Second World War?",
@@ -55,6 +56,24 @@ const quizContainer = document.getElementById("start-quiz-section");
 const questionDiv = document.getElementById("questions");
 const answersContainer = document.getElementById("answersContainer");
 
+// main function to generate the questions
+const generateQuestions = (index) => {
+  questionDiv.innerHTML = questionsArray[index].question;
+
+  questionsArray[index].answers.forEach((answer) => {
+    const button = document.createElement("button");
+    button.innerText = answer;
+    button.setAttribute("class", "answer-button");
+    button.setAttribute("class", "wrong-answer");
+    answersContainer.append(button);
+
+    if (answer === questionsArray[index].correctAnswer) {
+      button.dataset.correct = answer;
+    }
+    button.addEventListener("click", validateAnswer);
+  });
+};
+
 const validateAnswer = (event) => {
   const chosenAnswer = event.target.dataset.correct;
 
@@ -65,41 +84,22 @@ const validateAnswer = (event) => {
       answersContainer.innerHTML = "";
       generateQuestions(questionIndex);
     } else {
-      timerValue -= 5;
+      console.log("timer");
+      timer -= 5;
+      timerSpan.textContent = timer;
     }
-  } else {
-    quizContainer.innerHTML = "";
   }
-
-  // if incorrect subtract 5 seconds from timerValue
-  // if incorrect render error alert with message and status
-  // if correct render success alert with message and status
-  // set timeout for 500ms and then go to next question
-  // if question is last question set quizComplete to true and then render form
-  // if question is not last question then increment question index and render next question
 };
 
-// main function to generate the questions
-const generateQuestions = (index) => {
-  questionDiv.innerHTML = questionsArray[index].question;
-
-  questionsArray[index].answers.forEach((answer) => {
-    const button = document.createElement("button");
-    button.innerText = answer;
-    button.setAttribute("class", "answer-button");
-    answersContainer.append(button);
-
-    if (answer === questionsArray[index].correctAnswer) {
-      button.dataset.correct = answer;
-    }
-    button.addEventListener("click", validateAnswer);
-  });
-};
+// if incorrect subtract 5 seconds from timerValue
+// if incorrect render error alert with message and status
+// if correct render success alert with message and status
+// set timeout for 500ms and then go to next question
+// if question is last question set quizComplete to true and then render form
+// if question is not last question then increment question index and render next question
 
 // this code section will only be executed when the path is /quiz.html
 if (document.location.pathname === "/quiz.html") {
-  let timer = 60;
-
   const timerSpan = document.getElementById("timerSpan");
   timerSpan.textContent = timer;
 
@@ -120,7 +120,23 @@ if (document.location.pathname === "/quiz.html") {
   generateQuestions(questionIndex);
 }
 
+// to be worked on
 const onLoad = () => {
+  //extract info from local storage (get)
+  const getFromLocalStorage = (key, defaultValue) => {
+    const parsedData = JSON.parse(localStorage.getItem(key));
+    return parsedData ? parsedData : defaultValue;
+  };
+
+  //write info into local storage (set)
+  const writeToLocalStorage = (key, value) => {
+    localStorage.setItem(key, JSON.stringify(value));
+  };
+
+  //empty local storage (clear)
+  const clearLS = () => {
+    localStorage.clear();
+  };
   // initialise local storage
   // check if highscores exists in LS
   // if false then set highscores to empty array in LS
